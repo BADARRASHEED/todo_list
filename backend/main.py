@@ -23,6 +23,7 @@ class Settings:
     app_name: str
     database_path: Path
     cors_origins: list[str]
+    cors_origin_regex: str | None
 
 
 def load_settings() -> Settings:
@@ -42,6 +43,10 @@ def load_settings() -> Settings:
         app_name=os.getenv("APP_NAME", "Todo List API"),
         database_path=database_path,
         cors_origins=cors_origins,
+        cors_origin_regex=os.getenv(
+            "CORS_ORIGIN_REGEX",
+            r"https://.*\.vercel\.app",
+        ),
     )
 
 
@@ -183,6 +188,7 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.cors_origins,
+    allow_origin_regex=settings.cors_origin_regex,
     allow_credentials="*" not in settings.cors_origins,
     allow_methods=["*"],
     allow_headers=["*"],

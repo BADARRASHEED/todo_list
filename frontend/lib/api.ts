@@ -7,8 +7,10 @@ import type {
   TodoUpdateInput,
 } from "@/lib/types";
 
+const DEFAULT_API_URL = "https://badar-todolist.fastapicloud.dev";
+
 const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "") ?? "http://127.0.0.1:8000";
+  process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "") ?? DEFAULT_API_URL;
 
 function buildQuery(params: TodoQuery = {}) {
   const searchParams = new URLSearchParams();
