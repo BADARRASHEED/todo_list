@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*.log
+.pytest_cache/
+.ruff_cache/
+
+# Backend
+backend/.venv/
+backend/todos.db
+backend/.test-todos.db
+
+# Frontend
+frontend/.next/
+frontend/node_modules/
+frontend/out/
+frontend/.env.local
+
+# OS/editor
+.DS_Store
+Thumbs.db
